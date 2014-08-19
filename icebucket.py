@@ -1,6 +1,9 @@
 from flask import Flask
+import os
 
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__,
+            static_url_path='',
+            static_folder=os.path.dirname(os.path.realpath(__file__)))
 
 
 @app.route('/data')
