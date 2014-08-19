@@ -13,3 +13,23 @@ def data():
 def root():
     with open('index.html', 'r') as index_file:
         return index_file.read()
+
+
+@app.route('/js/<path:filename>')
+def send_js(filename):
+    return app.send_from_directory('/js', filename)
+
+
+@app.route('/css/<path:filename>')
+def send_css(filename):
+    return app.send_from_directory('/css', filename)
+
+
+@app.route('/img/<path:filename>')
+def send_img(filename):
+    return app.send_from_directory('/img', filename)
+
+
+@app.route('/fonts/<path:filename>')
+def send_fonts(filename):
+    return app.send_from_directory('/fonts', filename)
