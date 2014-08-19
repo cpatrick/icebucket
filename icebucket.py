@@ -1,12 +1,16 @@
 from flask import Flask, render_template
+import pymongo
+from bson.json_util import dumps
+import os
 
 app = Flask(__name__)
 
 
 @app.route('/data')
 def data():
-    with open('icebucket.json', 'r') as json_file:
-        return json_file.read()
+    conn = pymongo.Connection(os.environ['MONGOLAB_URI'])
+    db = conn.get_default_database()
+    return dumps(list(db['challenges'].find()))
 
 
 @app.route('/')
