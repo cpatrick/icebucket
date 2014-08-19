@@ -1,6 +1,6 @@
 
 $(function () {
-    d3.json('icebucket.json', function (error, data) {
+    d3.json('/data', function (error, data) {
         var svg,
             width = 600,
             padding = 10,
@@ -53,7 +53,7 @@ $(function () {
             .attr('y', function (d, i) { return (size + padding) * Math.floor(i / 5) + 10; })
             .attr('width', size - 20)
             .attr('height', size - 20)
-            .attr('xlink:href', function (d) { return 'img/' + d.from + '.png'; })
+            .attr('xlink:href', function (d) { return 'static/img/' + d.from + '.png'; })
             .style('cursor', 'pointer')
             .on('mouseover', function (d) {
                 var challengers, to, name;
@@ -119,7 +119,6 @@ $(function () {
                 }
                 return match ? 1 : 0.2;
             });
-            console.log(term);
         });
     });
 });
